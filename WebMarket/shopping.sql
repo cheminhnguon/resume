@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 04, 2017 lúc 12:16 CH
+-- Thời gian đã tạo: Th7 05, 2017 lúc 11:57 SA
 -- Phiên bản máy phục vụ: 10.1.21-MariaDB
 -- Phiên bản PHP: 5.6.30
 
@@ -112,7 +112,21 @@ INSERT INTO `category` (`idcate`, `alias`, `urlhinh`, `metadesc`, `tencate`, `Th
 (1, 'o-cung-hdd---ssd', '{\"url\" : \"http://daitailoc.com/images/O%20Cung%20HDD.jpg\",\"desc\" : \"\"}', '', 'Ổ Cứng HDD - SSD', 1, 1, 0, 15, 0),
 (174, 'o-cung-hhd', '', 'Ổ cứng HHD', 'Ổ cứng HHD', 2, 1, 0, 15, 0),
 (175, 'o-cung-msata', '', 'Ổ cứng mSATA', 'Ổ cứng mSATA', 3, 1, 0, 15, 0),
-(176, 'ban-phim', '', 'Bàn Phím', 'Bàn Phím', 4, 1, 0, 15, 0);
+(176, 'ban-phim', '', 'Bàn Phím', 'Bàn Phím', 4, 1, 0, 15, 0),
+(177, 'may-in-van-phong', '', 'Ổ cứng mSATA', 'Máy in văn phòng', 1, 1, 0, 2, 0),
+(178, 'may-scan', '', 'Máy Scan', 'Máy Scan', 1, 1, NULL, 2, 0),
+(179, 'may-chieu', '', NULL, 'Máy Chiếu', 1, 1, NULL, 2, 0),
+(180, 'may-fax-da-nang', '', NULL, 'Máy Fax', 1, 1, NULL, 2, 0),
+(181, 'ban-ui-ban-la', '', NULL, 'Bàn ủi, bàn là', 2, 1, NULL, 16, 0),
+(182, 'may-may', '', NULL, 'Máy may', 2, 1, NULL, 16, 0),
+(183, 'quat-dien', '', NULL, 'Quạt Điện', 2, 1, NULL, 16, 0),
+(184, 'may-loc-nuoc', '', NULL, 'Máy Lọc Nước', 2, 1, NULL, 16, 0),
+(185, 'may-hut-bui', '', NULL, 'Máy hút bụi', 2, 1, NULL, 16, 0),
+(186, 'may-say', '', NULL, 'Máy sấy', 2, 1, NULL, 16, 0),
+(187, 'me-va-be', '', NULL, 'Mẹ & Bé', 2, 1, NULL, 16, 0),
+(188, 'ta-bim', '', NULL, 'Tã, Bỉm', 2, 1, NULL, 16, 0),
+(190, 'thuc-pham-cho-be', '', NULL, 'Thực phẩm cho bé', 2, 1, NULL, 16, 0),
+(191, 'do-bao-ve-be', '', NULL, 'Đồ bảo vệ bé', 2, 1, NULL, 16, 0);
 
 -- --------------------------------------------------------
 
@@ -214,7 +228,8 @@ CREATE TABLE `menu` (
 INSERT INTO `menu` (`idmenu`, `alias`, `urlhinh`, `metadesc`, `tenMenu`, `ThuTu`, `ThuTuTrangChu`, `AnHien`) VALUES
 (2, 'thiet-bi-van-phong', '', 'Thiết Bị Văn Phòng là một trong các sản phẩm nổi bật của ĐẠI TÀI LỘC', 'Thiết Bị Văn Phòng', 2, 2, 1),
 (15, 'thiet-bi-dien-tu', '', 'Thiết bị điện tử', 'Thiết bị điện tử', 1, 1, 1),
-(16, 'thiet-bi-gia-dinh', '', 'Thiết bị gia đình', 'Thiết bị gia đình', 3, 3, 1);
+(16, 'thiet-bi-gia-dinh', '', 'Thiết bị gia đình', 'Thiết bị gia đình', 3, 3, 1),
+(18, 'do-tre-em', '', '', 'Đồ trẻ em', 4, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -302,6 +317,7 @@ CREATE TABLE `product` (
   `ngaycapnhat` date NOT NULL DEFAULT '0000-00-00',
   `gia` int(11) NOT NULL DEFAULT '0',
   `giaSi` int(12) NOT NULL,
+  `giagiam` int(11) NOT NULL,
   `urlHinh` text NOT NULL,
   `baiviet` text,
   `danhgia` text NOT NULL,
@@ -318,14 +334,16 @@ CREATE TABLE `product` (
 -- Đang đổ dữ liệu cho bảng `product`
 --
 
-INSERT INTO `product` (`idsp`, `alias`, `metadesc`, `idmenu`, `idcate`, `idcatecha`, `tensp`, `title`, `masp`, `mota`, `ngaycapnhat`, `gia`, `giaSi`, `urlHinh`, `baiviet`, `danhgia`, `soluongtonkho`, `khuyenmai`, `baohanh`, `AnHien`, `NoiBat`, `ThuTuTrangChu`, `ThuTuMenu`) VALUES
-(101, 'o-cung-seagate-320gb-sata-pc', 'Mua bán Ổ Cứng Seagate 320GB Sata dành cho desktop, ổ cứng hdd 320gb bảo hành 24 tháng. Luôn có giá ưu đãi cho khách hàng đặt mua với số lượng nhiều.', 15, 25, 1, 'Ổ Cứng Seagate 320GB Sata PC', '', 'HH00000891', 'Ổ cứng HDD (Hard Disk Drive) Seagate dung lượng 320GB kết nối chuẩn sata dành cho PC (máy vi tính để bàn). Thích hợp cho việc nâng cấp dung lượng vùng nhớ máy vi tính của bạn. Chiếc máy tính của bạn sẽ được vùng lưu trữ dữ liệu thêm rộng rãi hơn với dung lượng cộng thêm 320GB. Sản phẩm ổ cứng chính hãng seagate với chuẩn sata, được kết nối với hầu hết các dòng mainboard mới hoặc cũ.', '0000-00-00', 450000, 0, '{\r\n			\"url\" : \"http://daitailoc.com/images/o-cung-hdd-seagate-160gb-sata-pc-mong.jpg\",\r\n			\"desc\" : \"\"\r\n		}', '<p>\r\n	đang cập nhật...</p>\r\n', '', 0, 'Khi mua HDD 320GB chính hãng Seagate tại <b>ĐẠI TÀI LỘC</b> với số lượng trên 5. Quý khách hàng sẽ nhận được ngay giá ưu đãi, áp dụng cho tất cả cách khách hàng.\n<b>ĐẠI TÀI LỘC</b> cam kết giá ổ cứng seagate 320GB được bán đúng theo giá thị trường.      ', 'Bảo hành 24 tháng', 1, 0, NULL, NULL),
-(849, 'sdd-120g', NULL, 15, 1, 0, 'SDD 120GB', '', NULL, '', '0000-00-00', 100, 0, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL),
-(850, 'sdd-150g', NULL, 15, 1, 0, 'SDD 150GB', '', NULL, '', '0000-00-00', 150, 0, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL),
-(851, 'sdd-220g', NULL, 15, 1, 0, 'SDD 220GB', '', NULL, '', '0000-00-00', 200, 0, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL),
-(852, 'sdd-320g', NULL, 15, 1, 0, 'SDD 320GB', '', NULL, '', '0000-00-00', 300, 0, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL),
-(853, 'sdd-420g', NULL, 15, 1, 0, 'SDD 420GB', '', NULL, '', '0000-00-00', 400, 0, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL),
-(854, 'o-msata-120g', NULL, 15, 1, 0, 'Ổ mSATA 120GB', '', NULL, '', '0000-00-00', 120, 0, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL);
+INSERT INTO `product` (`idsp`, `alias`, `metadesc`, `idmenu`, `idcate`, `idcatecha`, `tensp`, `title`, `masp`, `mota`, `ngaycapnhat`, `gia`, `giaSi`, `giagiam`, `urlHinh`, `baiviet`, `danhgia`, `soluongtonkho`, `khuyenmai`, `baohanh`, `AnHien`, `NoiBat`, `ThuTuTrangChu`, `ThuTuMenu`) VALUES
+(101, 'o-cung-seagate-320gb-sata-pc', 'Mua bán Ổ Cứng Seagate 320GB Sata dành cho desktop, ổ cứng hdd 320gb bảo hành 24 tháng. Luôn có giá ưu đãi cho khách hàng đặt mua với số lượng nhiều.', 15, 25, 1, 'Ổ Cứng Seagate 320GB Sata PC', '', 'HH00000891', 'Ổ cứng HDD (Hard Disk Drive) Seagate dung lượng 320GB kết nối chuẩn sata dành cho PC (máy vi tính để bàn). Thích hợp cho việc nâng cấp dung lượng vùng nhớ máy vi tính của bạn. Chiếc máy tính của bạn sẽ được vùng lưu trữ dữ liệu thêm rộng rãi hơn với dung lượng cộng thêm 320GB. Sản phẩm ổ cứng chính hãng seagate với chuẩn sata, được kết nối với hầu hết các dòng mainboard mới hoặc cũ.', '0000-00-00', 450000, 0, 30, '{\r\n			\"url\" : \"http://daitailoc.com/images/o-cung-hdd-seagate-160gb-sata-pc-mong.jpg\",\r\n			\"desc\" : \"\"\r\n		}', '<p>\r\n	đang cập nhật...</p>\r\n', '', 0, 'Khi mua HDD 320GB chính hãng Seagate tại <b>ĐẠI TÀI LỘC</b> với số lượng trên 5. Quý khách hàng sẽ nhận được ngay giá ưu đãi, áp dụng cho tất cả cách khách hàng.\n<b>ĐẠI TÀI LỘC</b> cam kết giá ổ cứng seagate 320GB được bán đúng theo giá thị trường.      ', 'Bảo hành 24 tháng', 1, 0, NULL, NULL),
+(849, 'sdd-120g', NULL, 15, 1, 0, 'SDD 120GB', '', NULL, '', '0000-00-00', 100, 0, 30, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL),
+(850, 'sdd-150g', NULL, 15, 1, 0, 'SDD 150GB', '', NULL, '', '0000-00-00', 150, 0, 30, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL),
+(851, 'sdd-220g', NULL, 15, 1, 0, 'SDD 220GB', '', NULL, '', '0000-00-00', 200, 0, 30, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL),
+(852, 'sdd-320g', NULL, 15, 1, 0, 'SDD 320GB', '', NULL, '', '0000-00-00', 300, 0, 30, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL),
+(853, 'sdd-420g', NULL, 15, 1, 0, 'SDD 420GB', '', NULL, '', '0000-00-00', 400, 0, 30, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL),
+(854, 'o-msata-120g', NULL, 15, 1, 0, 'Ổ mSATA 120GB', '', NULL, '', '0000-00-00', 120, 0, 0, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL),
+(855, 'may-in-da-chuc-nang-laser-samsung-sl-m2070f', NULL, 2, 177, -1, 'MÁY IN LASER SAMSUNG SL-M2070F', '', NULL, '', '0000-00-00', 500, 0, 0, '', NULL, '', 0, NULL, NULL, 1, 1, NULL, NULL),
+(856, 'may-in-da-nang-don-sac-samsung-scx-3401f', NULL, 2, 177, -1, 'MÁY IN ĐA NĂNG ĐƠN SẮC SAMSUNG SCX-3401F', '', NULL, '', '0000-00-00', 500, 0, 0, '', NULL, '', 0, NULL, NULL, 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -470,7 +488,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
-  MODIFY `idcate` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
+  MODIFY `idcate` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
 --
 -- AUTO_INCREMENT cho bảng `donhang`
 --
@@ -495,7 +513,7 @@ ALTER TABLE `loaitintuc`
 -- AUTO_INCREMENT cho bảng `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `idmenu` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idmenu` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT cho bảng `orderdetail`
 --
@@ -515,7 +533,7 @@ ALTER TABLE `pricelist`
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `idsp` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=855;
+  MODIFY `idsp` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=857;
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
