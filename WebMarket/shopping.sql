@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 05, 2017 lúc 11:57 SA
+-- Thời gian đã tạo: Th7 06, 2017 lúc 12:07 CH
 -- Phiên bản máy phục vụ: 10.1.21-MariaDB
 -- Phiên bản PHP: 5.6.30
 
@@ -34,7 +34,7 @@ CREATE TABLE `article` (
   `Hinh` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `MoTa` text COLLATE utf8_unicode_ci NOT NULL,
   `NoiDung` text COLLATE utf8_unicode_ci NOT NULL,
-  `NgayDang` datetime NOT NULL,
+  `NgayDang` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `LuotXem` int(11) NOT NULL DEFAULT '0',
   `Title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Des` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -42,6 +42,15 @@ CREATE TABLE `article` (
   `AnHien` tinyint(1) NOT NULL DEFAULT '1',
   `STT` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+
+--
+-- Đang đổ dữ liệu cho bảng `article`
+--
+
+INSERT INTO `article` (`idTT`, `idLoai`, `TenTT`, `Alias`, `Hinh`, `MoTa`, `NoiDung`, `NgayDang`, `LuotXem`, `Title`, `Des`, `Keyword`, `AnHien`, `STT`) VALUES
+(5, 1, '5 smartphone đáng chờ đợi nhất 6 tháng cuối năm 2017: Gọi tên Bphone 2', '5-smartphone-dang-doi-nhat-6-thang-cuoi-2017-goi-ten-bphone-2', 'https://cdn3.tgdd.vn/Files/2017/07/05/999903/bphone_2_640x360-300x200.jpg', 'Thị trường smartphone Việt Nam nửa cuối 2017 được dự đoán sẽ rất sôi động vì với sự xuất hiện của những chiếc flagship đến từ Apple hay Samsung, một cái tên đang rất được quan tâm là Bphone 2 cũng sẽ \"xuất trận\". Vậy ngoài Bphone 2, còn chiếc smartphone nào đáng để chúng ta trông ngóng?', '', '2017-07-06 15:49:51', 0, '', '', '', 1, 0),
+(6, 1, 'Note 7 FE xách tay đã chính thức về Việt Nam: Giá bao nhiêu?', 'note-7-fe-xach-tay-chinh-thuc-ve-viet-nam-gia-bao-nhieu', 'https://cdn.tgdd.vn/Files/2017/07/03/999335/note_7_fe_800x451-300x200.jpg', 'Ngày bán ra Samsung Galaxy Note 7 FE (7/7/2017) đã cận kề, nhưng bất ngờ sản phẩm này đã xuất hiện tại Việt Nam, một cửa hàng xách tay xác nhận họ đã có hàng để bán ra.', '', '2017-07-06 15:49:51', 0, '', '', '', 1, 0),
+(7, 1, 'Apple và LG Display hợp tác: \"Kèo thơm\" nhưng LG nên cẩn thận', 'apple-va-lg-display-hop-tac-lam-man-hinh-oled', 'https://cdn2.tgdd.vn/Files/2017/07/05/999982/apple-ld-display_640x360-300x200.jpg', 'Apple muốn tăng hiệu suất sử dụng màn hình OLED, trong khi LG lại muốn trở thành nhà cung cấp màn hình OLED hàng đầu cho thiết bị di động. Liệu đây có phải là một sự kết hợp hoàn hảo?', '', '2017-07-06 15:49:51', 0, '', '', '', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -123,10 +132,10 @@ INSERT INTO `category` (`idcate`, `alias`, `urlhinh`, `metadesc`, `tencate`, `Th
 (184, 'may-loc-nuoc', '', NULL, 'Máy Lọc Nước', 2, 1, NULL, 16, 0),
 (185, 'may-hut-bui', '', NULL, 'Máy hút bụi', 2, 1, NULL, 16, 0),
 (186, 'may-say', '', NULL, 'Máy sấy', 2, 1, NULL, 16, 0),
-(187, 'me-va-be', '', NULL, 'Mẹ & Bé', 2, 1, NULL, 16, 0),
-(188, 'ta-bim', '', NULL, 'Tã, Bỉm', 2, 1, NULL, 16, 0),
-(190, 'thuc-pham-cho-be', '', NULL, 'Thực phẩm cho bé', 2, 1, NULL, 16, 0),
-(191, 'do-bao-ve-be', '', NULL, 'Đồ bảo vệ bé', 2, 1, NULL, 16, 0);
+(187, 'me-va-be', '', NULL, 'Mẹ & Bé', 2, 1, NULL, 18, 0),
+(188, 'ta-bim', '', NULL, 'Tã, Bỉm', 2, 1, NULL, 18, 0),
+(190, 'thuc-pham-cho-be', '', NULL, 'Thực phẩm cho bé', 2, 1, NULL, 18, 0),
+(191, 'do-bao-ve-be', '', NULL, 'Đồ bảo vệ bé', 2, 1, NULL, 18, 0);
 
 -- --------------------------------------------------------
 
@@ -203,6 +212,13 @@ CREATE TABLE `loaitintuc` (
   `AnHien` tinyint(1) NOT NULL,
   `ThuTu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `loaitintuc`
+--
+
+INSERT INTO `loaitintuc` (`idLoai`, `TenLoai`, `Alias`, `Hinh`, `MoTa`, `Title`, `Des`, `Keyword`, `Parent`, `AnHien`, `ThuTu`) VALUES
+(1, 'Tin Công Nghệ', 'tin-cong-nghe', '', '', '', '', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -343,7 +359,12 @@ INSERT INTO `product` (`idsp`, `alias`, `metadesc`, `idmenu`, `idcate`, `idcatec
 (853, 'sdd-420g', NULL, 15, 1, 0, 'SDD 420GB', '', NULL, '', '0000-00-00', 400, 0, 30, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL),
 (854, 'o-msata-120g', NULL, 15, 1, 0, 'Ổ mSATA 120GB', '', NULL, '', '0000-00-00', 120, 0, 0, '', NULL, '', 0, 'Giảm 100 nghìn cho đơn hàng trị giá 1000 000 đ', NULL, 1, 1, NULL, NULL),
 (855, 'may-in-da-chuc-nang-laser-samsung-sl-m2070f', NULL, 2, 177, -1, 'MÁY IN LASER SAMSUNG SL-M2070F', '', NULL, '', '0000-00-00', 500, 0, 0, '', NULL, '', 0, NULL, NULL, 1, 1, NULL, NULL),
-(856, 'may-in-da-nang-don-sac-samsung-scx-3401f', NULL, 2, 177, -1, 'MÁY IN ĐA NĂNG ĐƠN SẮC SAMSUNG SCX-3401F', '', NULL, '', '0000-00-00', 500, 0, 0, '', NULL, '', 0, NULL, NULL, 1, 1, NULL, NULL);
+(856, 'may-in-da-nang-don-sac-samsung-scx-3401f', NULL, 2, 177, -1, 'MÁY IN ĐA NĂNG ĐƠN SẮC SAMSUNG SCX-3401F', '', NULL, '', '0000-00-00', 500, 0, 0, '', NULL, '', 0, NULL, NULL, 1, 1, NULL, NULL),
+(857, 'ban-la-hoi-nuoc-cam-tay-cao-cap-sokany-model-ichibai-trang-tim', NULL, 16, 181, 0, 'Bàn là hơi nước cầm tay cao cấp SoKany Model Ichibai Trắng tím', '', NULL, '', '0000-00-00', 100, 0, 0, 'https://cdn02.static-adayroi.com/resize/240_240/100/0/2016/08/20/1471662753856_5338703.jpg', NULL, '', 0, NULL, NULL, 1, 1, NULL, NULL),
+(858, 'ban-ui-hoi-nuoc-dung-philips-gc504-1600w-hong-hang-chinh-hang', NULL, 16, 181, 0, 'Bàn ủi hơi nước đứng Philips GC504 1600W Hồng (Hàng chính hãng)', '', NULL, '', '0000-00-00', 100, 0, 0, 'https://cdn02.static-adayroi.com/resize/240_240/100/0/2016/11/16/1479268070585_2126583.jpg', NULL, '', 0, NULL, NULL, 1, 1, NULL, NULL),
+(859, 'ban-ui-du-lich-philips-hd-1301-250w-trang-hang-chinh-hang', NULL, 16, 181, 0, 'Bàn ủi du lịch Philips HD 1301 250W (Trắng) - Hàng chính hãng', '', NULL, '', '0000-00-00', 100, 0, 0, 'https://cdn02.static-adayroi.com/resize/240_240/100/0/2016/08/27/1472272604341_8743192.jpg', NULL, '', 0, NULL, NULL, 1, 1, NULL, NULL),
+(860, 'may-may-mini-toptek-fhsm505', NULL, 16, 182, 0, 'Máy may mini Toptek FHSM505', '', NULL, '', '0000-00-00', 100, 0, 0, '', NULL, '', 0, NULL, NULL, 1, 1, NULL, NULL),
+(861, 'quat-lung-mitsubishi-r30-hrtw-39w', NULL, 16, 183, 0, 'Quạt lửng Mitsubishi R30-HRTW 39W', '', NULL, '', '0000-00-00', 100, 0, 0, 'https://cdn02.static-adayroi.com/resize/240_240/100/0/2016/09/08/1473329168959_2229403.jpg', NULL, '', 0, NULL, NULL, 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -473,7 +494,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `article`
 --
 ALTER TABLE `article`
-  MODIFY `idTT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idTT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT cho bảng `banggia`
 --
@@ -508,7 +529,7 @@ ALTER TABLE `imageproduct`
 -- AUTO_INCREMENT cho bảng `loaitintuc`
 --
 ALTER TABLE `loaitintuc`
-  MODIFY `idLoai` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idLoai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT cho bảng `menu`
 --
@@ -533,7 +554,7 @@ ALTER TABLE `pricelist`
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `idsp` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=857;
+  MODIFY `idsp` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=862;
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
