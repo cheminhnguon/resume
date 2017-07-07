@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 06, 2017 lúc 12:07 CH
+-- Thời gian đã tạo: Th7 07, 2017 lúc 12:04 CH
 -- Phiên bản máy phục vụ: 10.1.21-MariaDB
 -- Phiên bản PHP: 5.6.30
 
@@ -529,7 +529,7 @@ ALTER TABLE `imageproduct`
 -- AUTO_INCREMENT cho bảng `loaitintuc`
 --
 ALTER TABLE `loaitintuc`
-  MODIFY `idLoai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idLoai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT cho bảng `menu`
 --
